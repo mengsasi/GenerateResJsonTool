@@ -11,10 +11,10 @@ generateWeb: 生成从网上动态加载的资源文件
 
 #### assetsGroups: 定义组
 {
-    \n"folderPath": "assets\\singles",
-    \n"urlRoot": "assets",
-    \n"single": true,
-    \n"des": "single为true 只生成一个组"
+    +"folderPath": "assets\\singles",
+    +"urlRoot": "assets",
+    +"single": true,
+    +"des": "single为true 只生成一个组"
 },
 {
     "folderPath": "assets\\pictures",
