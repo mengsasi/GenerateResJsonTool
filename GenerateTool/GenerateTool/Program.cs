@@ -21,7 +21,7 @@ namespace GenerateTool {
             JToken configJToken = JToken.Parse( configJsonText );
 
             DirectoryInfo generateToolInfo = new DirectoryInfo( generateToolFolder );
-            string root = generateToolInfo.Parent.Parent.FullName;//工程目录
+            string root = generateToolInfo.Parent.FullName;//工程目录 按照自己项目Tools文件夹路径自定义
             string resourcePath = root + @"\Egret\resource";//resource路径
 
             if( configJToken["resource"] != null ) {
