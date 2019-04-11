@@ -1,0 +1,5 @@
+{"file":"Arena.png","frames":{
+"ArenaBoxClose":{"x":525,"y":1,"w":244,"h":165,"offX":0,"offY":0,"sourceW":244,"sourceH":165},
+"ArenaBoxOpen":{"x":1,"y":1,"w":252,"h":262,"offX":0,"offY":0,"sourceW":252,"sourceH":262},
+"bg282":{"x":255,"y":1,"w":268,"h":174,"offX":0,"offY":0,"sourceW":268,"sourceH":174},
+"BoxingLineOp":{"x":525,"y":168,"w":402,"h":98,"offX":0,"offY":0,"sourceW":402,"sourceH":98}}}
