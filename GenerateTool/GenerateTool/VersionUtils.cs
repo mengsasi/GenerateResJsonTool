@@ -14,13 +14,12 @@ namespace GenerateTool {
             string crc = "";
             if( UseVersionSuffix ) {
 
+                var rd = new Random();
+
+                var version = rd.Next().ToString();
 
 
-
-
-
-
-                crc = "?v=";
+                crc = "?v=" + version;
             }
             return crc;
         }

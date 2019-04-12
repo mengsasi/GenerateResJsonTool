@@ -135,7 +135,12 @@ namespace GenerateTool {
                 var fileName = name[0];
 
                 Res res = new Res();
-                res.Url = urlRoot + "/" + item.Name + VersionUtils.GetCRC32();
+                if( urlRoot == "" ) {
+                    res.Url = item.Name + VersionUtils.GetCRC32();
+                }
+                else {
+                    res.Url = urlRoot + "/" + item.Name + VersionUtils.GetCRC32();
+                }
                 res.Name = fileName;
 
                 if( extension == ".png" || extension == ".jpg" ) {
