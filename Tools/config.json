@@ -1,22 +1,12 @@
 ﻿{
-	"resource": "E:\\Project\\Egret\\resource",
+	"resource1": "E:\\Project\\Egret\\resource",
 	"generatelocal": true,
 	"assetsGroups": [
 		{
-			"folderPath": "assets\\singles",
+			"folderPath": "pictures",
 			"urlRoot": "assets",
 			"single": true,
 			"des": "single为true 只生成一个组"
-		},
-		{
-			"folderPath": "assets\\pictures",
-			"urlRoot": "assets/pictures",
-			"single": false
-		},
-		{
-			"folderPath": "assets\\sounds",
-			"urlRoot": "assets/sounds",
-			"single": false
 		}
 	],
 	"defaultresjson": "default.res.json",
