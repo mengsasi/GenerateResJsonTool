@@ -107,7 +107,11 @@ namespace GenerateTool {
             DirectoryInfo folder = new DirectoryInfo( folderPath );
             group.Name = folder.Name;//temp下子文件夹
             List<Res> list = new List<Res>();
-            SpecialFolderGenerate.SheetFolder2Reses( folderPath, urlRoot + "/" + folder.Name, list );
+            var newUrl = folder.Name;
+            if( urlRoot != "" ) {
+                newUrl = urlRoot + "/" + folder.Name;
+            }
+            SpecialFolderGenerate.SheetFolder2Reses( folderPath, newUrl, list );
             group.listRes = list;
             group.Keys = group.GenerateKey();
             return group;
@@ -120,7 +124,11 @@ namespace GenerateTool {
                 var path = allFolders[i];
                 DirectoryInfo folder = new DirectoryInfo( path );
                 var folderName = folder.Name;
-                SpecialFolderGenerate.SheetFolder2Reses( path, urlRoot + "/" + folderName, list );
+                var newUrl = folderName;
+                if( urlRoot != "" ) {
+                    newUrl = urlRoot + "/" + folderName;
+                }
+                SpecialFolderGenerate.SheetFolder2Reses( path, newUrl, list );
             }
             return list;
         }
@@ -135,11 +143,9 @@ namespace GenerateTool {
                 var fileName = name[0];
 
                 Res res = new Res();
-                if( urlRoot == "" ) {
-                    res.Url = item.Name + VersionUtils.GetCRC32();
-                }
-                else {
-                    res.Url = urlRoot + "/" + item.Name + VersionUtils.GetCRC32();
+                res.Url = item.Name + VersionUtils.GetCRC32();
+                if( urlRoot != "" ) {
+                    res.Url = urlRoot + "/" + res.Url;
                 }
                 res.Name = fileName;
 
