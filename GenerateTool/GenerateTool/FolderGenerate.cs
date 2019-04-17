@@ -77,7 +77,7 @@ namespace GenerateTool {
                 var fileName = name[0];
 
                 Res res = new Res();
-                var url = Helper.GetUrl( urlRoot, item.Name + VersionUtils.GetCRC32() );
+                var url = Helper.GetUrl( urlRoot, item.Name + VersionUtils.GetSVNVersion( item.FullName ) );
                 res.Url = url;
                 res.Name = fileName;
 

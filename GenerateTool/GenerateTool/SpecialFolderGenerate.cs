@@ -20,16 +20,16 @@ namespace GenerateTool {
                 var fileName = name[0];
                 var ext = item.Extension;
                 var extension = ext.ToLower();
-                Res r = new Res();
-                r.Url = "config/" + item.Name;
-                r.Name = fileName + "_" + extension.Replace( ".", "" );
+                Res res = new Res();
+                res.Url = "config/" + item.Name;
+                res.Name = fileName + "_" + extension.Replace( ".", "" );
                 if( extension == ".json" ) {
-                    r.Type = "json";
+                    res.Type = "json";
                 }
                 else {
-                    r.Type = "bin";
+                    res.Type = "bin";
                 }
-                list.Add( r );
+                list.Add( res );
             }
             return list;
         }
@@ -55,11 +55,11 @@ namespace GenerateTool {
                 }
                 var ext = item.Extension;
                 var extension = ext.ToLower();
-                Res r = new Res();
-                r.Url = "Font/" + item.Name;
-                r.Name = n;
-                r.Type = "bin";//font assetmanager会崩
-                list.Add( r );
+                Res res = new Res();
+                res.Url = "Font/" + item.Name;
+                res.Name = n;
+                res.Type = "bin";//font assetmanager会崩
+                list.Add( res );
             }
             return list;
         }
@@ -137,7 +137,7 @@ namespace GenerateTool {
                 var fileName = name[0];
 
                 Res res = new Res();
-                var url = Helper.GetUrl( urlRoot, item.Name + VersionUtils.GetCRC32() );
+                var url = Helper.GetUrl( urlRoot, item.Name + VersionUtils.GetSVNVersion( item.FullName ) );
                 res.Url = url;
                 res.Name = fileName;
 
