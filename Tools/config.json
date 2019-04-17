@@ -12,13 +12,14 @@
 	"defaultresjson": "default.res.json",
 	"split": "=============分割线===============",
 	"generateWeb": false,
+	"svnPath": "https://项目svn地址",
 	"gangsterGroups": [
 		{
 			"folderPath": "webresource",
 			"urlRoot": "",
-			"single": true
-		},
+			"single": false
+		}
 	],
 	"webresjson": "web.res.json",
-	"description": "folderPath前后没有\\，urlRoot前后没有/，generateWeb生成第二个resjson"
+	"description": "folderPath前后没有\\，urlRoot前后没有/，generateWeb生成第二个resjson 使用svnPath,urlRoot拼接成svn地址，取文件版本号"
 }
