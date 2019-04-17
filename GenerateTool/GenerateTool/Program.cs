@@ -28,9 +28,9 @@ namespace GenerateTool {
             }
             resourcePath += "\\";
 
-            if( configJToken["svnPath"] != null ) {
-                VersionUtils.InitSVNClient( configJToken["svnPath"].Value<string>() );
-            }
+            //if( configJToken["svnPath"] != null ) {
+            //    SVNVersion.InitSVNClient( configJToken["svnPath"].Value<string>() );
+            //}
             //不加后缀
             VersionUtils.UseVersionSuffix = false;
 
@@ -48,7 +48,7 @@ namespace GenerateTool {
                 GenerateUtil.GenerateWeb( configJToken, resourcePath, gangsterResJson );
             }
 
-            VersionUtils.DeinitSVNClient();
+            //SVNVersion.DeinitSVNClient();
 
             if( needStop ) {
                 Console.ReadKey();

@@ -137,7 +137,7 @@ namespace GenerateTool {
                 var fileName = name[0];
 
                 Res res = new Res();
-                var url = Helper.GetUrl( urlRoot, item.Name + VersionUtils.GetSVNVersion( item.FullName ) );
+                var url = Helper.GetUrl( urlRoot, item.Name + VersionUtils.GetVersion( item.FullName ) );
                 res.Url = url;
                 res.Name = fileName;
 

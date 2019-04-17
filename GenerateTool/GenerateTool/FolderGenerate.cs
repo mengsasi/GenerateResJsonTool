@@ -17,7 +17,7 @@ namespace GenerateTool {
             var exist = globalRes.Find( n => n.Name == res.Name && n.Type == res.Type );
             if( exist != null ) {
                 Program.needStop = true;
-                Console.WriteLine( "存在重复文件名文件" + res.Url );
+                Console.WriteLine( "存在重复文件名文件" + res.Url + " -- " + exist.Url );
             }
             globalRes.Add( res );
         }
@@ -77,7 +77,7 @@ namespace GenerateTool {
                 var fileName = name[0];
 
                 Res res = new Res();
-                var url = Helper.GetUrl( urlRoot, item.Name + VersionUtils.GetSVNVersion( item.FullName ) );
+                var url = Helper.GetUrl( urlRoot, item.Name + VersionUtils.GetVersion( item.FullName ) );
                 res.Url = url;
                 res.Name = fileName;
 
