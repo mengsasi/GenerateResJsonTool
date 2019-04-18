@@ -90,6 +90,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpecialFolderGenerate.cs" />
     <Compile Include="SVNVersion.cs" />
+    <Compile Include="UploadingTool\FileCollector.cs" />
+    <Compile Include="UploadingTool\FTPHelper.cs" />
+    <Compile Include="UploadingTool\FTPUtils.cs" />
+    <Compile Include="UploadingTool\MainUploading.cs" />
+    <Compile Include="UploadingTool\ResContainer.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="VersionUtils.cs" />
   </ItemGroup>

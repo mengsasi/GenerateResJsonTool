@@ -29,6 +29,9 @@ namespace GenerateTool {
 
             //生成文件
             GenerateUtil.GenerateFile( filePath, listGroup );
+
+            //记录所有本地文件Res
+            UploadingTool.ResContainer.AddReses( listGroup );
         }
 
         public static void GenerateWeb( JToken configJToken, string resourcePath, string filePath ) {
@@ -36,6 +39,11 @@ namespace GenerateTool {
             List<Group> listGroup = new List<Group>();
 
             GenerateUtil.GenerateConfig( listGroup, configJToken["gangsterGroups"], resourcePath );
+
+            if( UploadingTool.MainUploading.isUploading ) {
+                //添加修改的本地组
+                listGroup.AddRange( UploadingTool.MainUploading.ListChangeGroup );
+            }
 
             //生成文件
             GenerateUtil.GenerateFile( filePath, listGroup );
@@ -78,7 +86,6 @@ namespace GenerateTool {
         }
 
         public static void GenerateFile( string filePath, List<Group> listGroup ) {
-
             var listRes = new List<Res>();
             for( int i = 0; i < listGroup.Count; i++ ) {
                 var l = listGroup[i].listRes;
@@ -91,7 +98,6 @@ namespace GenerateTool {
             json = json.AppendRightBrace();
 
             FileUtil.Save( filePath, json );
-
         }
 
     }
@@ -186,6 +192,8 @@ namespace GenerateTool {
         public string Type;
         public string Name;
         public string SubKeys = "";
+
+        public Group group;
 
         public string Res2Json() {
             string json = "";

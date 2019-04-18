@@ -21,17 +21,25 @@ namespace GenerateTool {
 
             DirectoryInfo generateToolInfo = new DirectoryInfo( generateToolFolder );
             string root = generateToolInfo.Parent.Parent.FullName;//工程目录
-            string resourcePath = root + @"\Egret\resource";//resource路径
 
-            if( configJToken["resource"] != null ) {
-                resourcePath = configJToken["resource"].Value<string>();//配置的resource路径
+            if( configJToken["root"] != null ) {
+                root = configJToken["root"].Value<string>();//配置的root路径
             }
+            string resourcePath = root + @"\Egret\resource";//resource路径
             resourcePath += "\\";
+
+            string webResourcePath = resourcePath;
+            if( configJToken["webResourcePath"] != null ) {
+                webResourcePath = root + configJToken["webResourcePath"].Value<string>();
+            }
 
             //if( configJToken["svnPath"] != null ) {
             //    SVNVersion.InitSVNClient( configJToken["svnPath"].Value<string>() );
             //}
-            //不加后缀
+
+            //生成本地default.res.json
+
+            //不加版本号后缀
             VersionUtils.UseVersionSuffix = false;
 
             var generateLocal = configJToken["generatelocal"].Value<bool>();
@@ -39,14 +47,31 @@ namespace GenerateTool {
                 string defaultResJson = resourcePath + configJToken["defaultresjson"].Value<string>();
                 GenerateUtil.GenerateLocal( configJToken, resourcePath, defaultResJson );
             }
-            //加版本号
+
+            if( configJToken["uploading"] != null ) {
+                var uploading = configJToken["uploading"].Value<bool>();
+                UploadingTool.MainUploading.isUploading = uploading;
+            }
+
+            if( UploadingTool.MainUploading.isUploading ) {
+                //生成改变的资源组
+                UploadingTool.MainUploading.MainProgram( root, configJToken );
+            }
+
+            //生成网络res.json
+
+            //加版本号后缀
             VersionUtils.UseVersionSuffix = true;
 
             var generateWeb = configJToken["generateWeb"].Value<bool>();
             if( generateWeb ) {
-                string gangsterResJson = resourcePath + configJToken["gangsterresjson"].Value<string>();
-                GenerateUtil.GenerateWeb( configJToken, resourcePath, gangsterResJson );
+                string gangsterResJson = webResourcePath + configJToken["gangsterresjson"].Value<string>();
+                GenerateUtil.GenerateWeb( configJToken, webResourcePath, gangsterResJson );
             }
+
+            //上传ftp
+            UploadingTool.FTPUtils.InitFTP( configJToken );
+            UploadingTool.MainUploading.Uploading( resourcePath );
 
             //SVNVersion.DeinitSVNClient();
 

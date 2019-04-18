@@ -54,14 +54,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GenerateTool.exe" size="17896">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GenerateTool.exe" size="27624">
       <assemblyIdentity name="GenerateTool" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>wJZOhB1BQKBEUBAdab6haIkiAB1Ry+z5QJoq8zWoD+0=</dsig:DigestValue>
+        <dsig:DigestValue>/+wD5Pj+2v0K9mb0rqVI2XNWVjQKx2eJzYLUhOtwNcg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
