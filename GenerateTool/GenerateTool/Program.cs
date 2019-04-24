@@ -7,12 +7,14 @@ namespace GenerateTool {
     class Program {
 
         public static bool needStop = false;
+        public static bool IgnoreWeb = false;
+        public static string Version = "";
+        public static string VersionFolder = "";
 
         static void Main( string[] args ) {
 
             Console.WriteLine( "请稍候，不要关闭程序..." );
 
-            FolderGenerate.Init();
 
             //GenerateTool文件夹
             string generateToolFolder = Environment.CurrentDirectory;
@@ -31,7 +33,17 @@ namespace GenerateTool {
             string webResourcePath = resourcePath;
             if( configJToken["webResourcePath"] != null ) {
                 webResourcePath = root + configJToken["webResourcePath"].Value<string>();
+                webResourcePath += "\\";
             }
+            if( configJToken["ignoreWeb"] != null ) {
+                Program.IgnoreWeb = configJToken["ignoreWeb"].Value<bool>();
+            }
+            string version = "";
+            if( configJToken["version"] != null ) {
+                version = configJToken["version"].Value<string>();
+            }
+            Program.Version = version.Replace( ".", "" );
+            Program.VersionFolder = configJToken["versionFolder"].Value<string>();
 
             //if( configJToken["svnPath"] != null ) {
             //    SVNVersion.InitSVNClient( configJToken["svnPath"].Value<string>() );
@@ -41,33 +53,37 @@ namespace GenerateTool {
 
             //不加版本号后缀
             VersionUtils.UseVersionSuffix = false;
-
+            FolderGenerate.Init();
             var generateLocal = configJToken["generatelocal"].Value<bool>();
             if( generateLocal ) {
                 string defaultResJson = resourcePath + configJToken["defaultresjson"].Value<string>();
                 GenerateUtil.GenerateLocal( configJToken, resourcePath, defaultResJson );
             }
 
+
             if( configJToken["uploading"] != null ) {
                 var uploading = configJToken["uploading"].Value<bool>();
                 UploadingTool.MainUploading.isUploading = uploading;
             }
-
             if( UploadingTool.MainUploading.isUploading ) {
                 //生成改变的资源组
                 UploadingTool.MainUploading.MainProgram( root, configJToken );
             }
 
             //生成网络res.json
+            Program.IgnoreWeb = false;//不忽略，就是生成网络资源
 
             //加版本号后缀
             VersionUtils.UseVersionSuffix = true;
-
+            FolderGenerate.Init();
             var generateWeb = configJToken["generateWeb"].Value<bool>();
             if( generateWeb ) {
-                string gangsterResJson = webResourcePath + configJToken["gangsterresjson"].Value<string>();
+                string resName = configJToken["gangsterresjson"].Value<string>();
+                resName = resName.Replace( "[version]", version );
+                string gangsterResJson = webResourcePath + resName;
                 GenerateUtil.GenerateWeb( configJToken, webResourcePath, gangsterResJson );
             }
+
 
             //上传ftp
             UploadingTool.FTPUtils.InitFTP( configJToken );
@@ -78,6 +94,16 @@ namespace GenerateTool {
             if( needStop ) {
                 Console.ReadKey();
             }
+        }
+
+        //遍历时，web开头文件夹忽略continue
+        public static bool CheckWebFolder( string path ) {
+            if( Program.IgnoreWeb ) {
+                if( path.StartsWith( "web" ) || path.StartsWith( "Web" ) ) {
+                    return true;
+                }
+            }
+            return false;
         }
 
     }

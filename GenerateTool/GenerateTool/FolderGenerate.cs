@@ -32,7 +32,9 @@ namespace GenerateTool {
                 for( int i = 0; i < allFolders.Length; i++ ) {
                     var path = allFolders[i];
                     Group group = FolderGenerate.Folder2Group( path, urlRoot );
-                    listGroup.Add( group );
+                    if( group != null ) {
+                        listGroup.Add( group );
+                    }
                 }
             }
         }
@@ -41,9 +43,13 @@ namespace GenerateTool {
         // folderPath .../assets/temp/avatar
         // urlRoot       assets/temp/(avatar)
         public static Group Folder2Group( string folderPath, string urlRoot ) {
-            Group group = new Group();
             DirectoryInfo folder = new DirectoryInfo( folderPath );
-            group.Name = folder.Name;//temp下子文件夹
+            string folderName = folder.Name;
+            if( Program.CheckWebFolder( folderName ) ) {
+                return null;
+            }
+            Group group = new Group();
+            group.Name = folderName;//temp下子文件夹
             List<Res> list = new List<Res>();
             var url = Helper.GetUrl( urlRoot, folder.Name );
             FolderGenerate.Folder2Reses( folderPath, url, list );
@@ -58,7 +64,11 @@ namespace GenerateTool {
             for( int i = 0; i < allFolders.Length; i++ ) {
                 var path = allFolders[i];
                 DirectoryInfo folder = new DirectoryInfo( path );
-                var url = Helper.GetUrl( urlRoot, folder.Name );
+                string folderName = folder.Name;
+                if( Program.CheckWebFolder( folderName ) ) {
+                    continue;
+                }
+                var url = Helper.GetUrl( urlRoot, folderName );
                 FolderGenerate.Folder2Reses( path, url, list );
             }
             return list;
@@ -69,6 +79,7 @@ namespace GenerateTool {
         //"name": "City1"
         public static List<Res> Folder2Res( string folderPath, string urlRoot, List<Res> list ) {
             DirectoryInfo folder = new DirectoryInfo( folderPath );
+            var folderName = folder.Name;
             FileInfo[] files = folder.GetFiles();
             foreach( var item in files ) {
                 var ext = item.Extension;
@@ -135,7 +146,12 @@ namespace GenerateTool {
                     res.Type = "font";
                 }
                 else if( extension == ".mp3" || extension == ".wav" || extension == ".ogg" ) {
-
+                    //if( folderName.Contains( "sound" ) || folderName.Contains( "voice" ) ) {
+                    //    res.SoundType = "effect";
+                    //}
+                    //else if( folderName.Contains( "music" ) ) {
+                    //    res.SoundType = "music";
+                    //}
                     res.Type = "sound";
                 }
                 else if( extension == ".spb" || extension == ".sproto" ) {

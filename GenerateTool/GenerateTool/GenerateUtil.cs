@@ -192,6 +192,7 @@ namespace GenerateTool {
         public string Type;
         public string Name;
         public string SubKeys = "";
+        //public string SoundType = "";
 
         public Group group;
 
@@ -209,6 +210,12 @@ namespace GenerateTool {
             json += "\n";
             json += "\t\t\t";
             json += "\"name\": \"" + Name + "\"";
+            //if( SoundType != "" ) {
+            //    json += ",";
+            //    json += "\n";
+            //    json += "\t\t\t";
+            //    json += "\"soundType\": \"" + SoundType + "\"";
+            //}
             if( SubKeys != "" ) {
                 json += ",";
                 json += "\n";

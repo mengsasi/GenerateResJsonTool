@@ -92,10 +92,11 @@ namespace GenerateTool {
                 for( int i = 0; i < allFolders.Length; i++ ) {
                     var path = allFolders[i];
                     Group group = SpecialFolderGenerate.SheetFolder2Group( path, urlRoot );
+                    if( group != null ) {
+                        SpecialFolderGenerate.CheckDelGroup( group, listGroup );
 
-                    SpecialFolderGenerate.CheckDelGroup( group, listGroup );
-
-                    listGroup.Add( group );
+                        listGroup.Add( group );
+                    }
                 }
             }
         }
@@ -103,11 +104,15 @@ namespace GenerateTool {
         // folderPath .../assets/temp/avatar
         // urlRoot       assets/temp/(avatar)
         public static Group SheetFolder2Group( string folderPath, string urlRoot ) {
-            Group group = new Group();
             DirectoryInfo folder = new DirectoryInfo( folderPath );
-            group.Name = folder.Name;//temp下子文件夹
+            string folderName = folder.Name;
+            if( Program.CheckWebFolder( folderName ) ) {
+                return null;
+            }
+            Group group = new Group();
+            group.Name = folderName;//temp下子文件夹
             List<Res> list = new List<Res>();
-            var url = Helper.GetUrl( urlRoot, folder.Name );
+            var url = Helper.GetUrl( urlRoot, folderName );
             SpecialFolderGenerate.SheetFolder2Reses( folderPath, url, list );
             group.listRes = list;
             group.Keys = group.GenerateKey();
@@ -120,7 +125,10 @@ namespace GenerateTool {
             for( int i = 0; i < allFolders.Length; i++ ) {
                 var path = allFolders[i];
                 DirectoryInfo folder = new DirectoryInfo( path );
-                var folderName = folder.Name;
+                string folderName = folder.Name;
+                if( Program.CheckWebFolder( folderName ) ) {
+                    continue;
+                }
                 var url = Helper.GetUrl( urlRoot, folder.Name );
                 SpecialFolderGenerate.SheetFolder2Reses( path, url, list );
             }

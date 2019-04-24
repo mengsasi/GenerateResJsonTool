@@ -1,4 +1,6 @@
 ﻿{
+	"version": "0.0.1",
+	"versionFolder": "",
 	"root": "E:\\Project\\Game",
 	"generatelocal": true,
 	"assetsGroups": [
@@ -30,12 +32,12 @@
 			"single": false
 		}
 	],
-	"gameresjson": "game.res.json",
+	"gameresjson": "game[version].res.json",
 	"versionTextPath": "0.1.0.txt",
 	"uploading": false,
 	"username": "",
 	"password": "",
 	"ftpRootPath": "ftp://192.168.19.58/WebResource/resource",
-	"description": "folderPath前后没有\\，urlRoot前后没有/，generateWeb生成第二个resjson 使用svnPath,urlRoot拼接成svn地址，取文件版本号",
+	"ignoreWeb": true,
 	"svnPath": "https://192.168.19.58/svn/Game/Egret/resource"
 }

@@ -1,0 +1,30 @@
+root：项目根目录，如果配置，使用配置目录，如果没有，使用当前目录的上上层级目录
+
+generatelocal：是否生成本地default.res.json
+
+folderPath前后没有\\，urlRoot前后没有/
+
+generateWeb：是否生成网络resjson
+
+使用svnPath,urlRoot拼接成svn地址，取文件版本号
+
+ingoreWeb：是否忽略本地web/Web开头文件夹
+为本地测试，保留一份数据，可不打入default.res.json中，但build时，仍需考虑移除该文件夹
+
+{
+	"folderPath": "assets\\singles",
+	"urlRoot": "assets",
+	"single": true,
+	"sheet": "false"
+}
+
+single为true，整个目录打成一个组，folderPath和urlRoot差一个层级
+
+single为false，在此目录下的子目录，每个子文件夹打成一个组
+
+sheet：是否是合图文件夹
+
+uploading：是否传到ftp
+
+ignoreWeb: 本地资源中有web开头的文件夹，是需要上传到网络资源的备份，
+为true时，生成default.res.json时，忽略这些文件夹

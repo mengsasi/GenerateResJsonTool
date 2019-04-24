@@ -27,6 +27,7 @@ E:\Project\GenerateTool\GenerateTool\obj\Debug\GenerateTool.application
 E:\Project\GenerateTool\GenerateTool\obj\Debug\GenerateTool.csproj.CopyComplete
 E:\Project\GenerateTool\GenerateTool\obj\Debug\GenerateTool.exe
 E:\Project\GenerateTool\GenerateTool\obj\Debug\GenerateTool.pdb
+E:\Project\GenerateResJsonTool\GenerateTool\GenerateTool\bin\Debug\SharpSvn.pdb
 E:\Project\GenerateResJsonTool\GenerateTool\GenerateTool\bin\Debug\GenerateTool.exe.config
 E:\Project\GenerateResJsonTool\GenerateTool\GenerateTool\bin\Debug\GenerateTool.exe.manifest
 E:\Project\GenerateResJsonTool\GenerateTool\GenerateTool\bin\Debug\GenerateTool.application
@@ -38,7 +39,6 @@ E:\Project\GenerateResJsonTool\GenerateTool\GenerateTool\bin\Debug\SharpSvn.dll
 E:\Project\GenerateResJsonTool\GenerateTool\GenerateTool\bin\Debug\Crc32.NET.xml
 E:\Project\GenerateResJsonTool\GenerateTool\GenerateTool\bin\Debug\Newtonsoft.Json.pdb
 E:\Project\GenerateResJsonTool\GenerateTool\GenerateTool\bin\Debug\Newtonsoft.Json.xml
-E:\Project\GenerateResJsonTool\GenerateTool\GenerateTool\bin\Debug\SharpSvn.pdb
 E:\Project\GenerateResJsonTool\GenerateTool\GenerateTool\bin\Debug\SharpSvn.xml
 E:\Project\GenerateResJsonTool\GenerateTool\GenerateTool\bin\Debug\SharpPlink-x64.svnExe
 E:\Project\GenerateResJsonTool\GenerateTool\GenerateTool\obj\Debug\GenerateTool.csproj.CoreCompileInputs.cache
@@ -47,3 +47,4 @@ E:\Project\GenerateResJsonTool\GenerateTool\GenerateTool\obj\Debug\GenerateTool.
 E:\Project\GenerateResJsonTool\GenerateTool\GenerateTool\obj\Debug\GenerateTool.csproj.CopyComplete
 E:\Project\GenerateResJsonTool\GenerateTool\GenerateTool\obj\Debug\GenerateTool.exe
 E:\Project\GenerateResJsonTool\GenerateTool\GenerateTool\obj\Debug\GenerateTool.pdb
+E:\Project\GenerateResJsonTool\GenerateTool\GenerateTool\obj\Debug\GenerateTool.csprojAssemblyReference.cache
