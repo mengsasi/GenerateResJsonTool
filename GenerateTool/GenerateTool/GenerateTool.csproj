@@ -80,22 +80,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CRCVersion.cs" />
-    <Compile Include="FileUtil.cs" />
-    <Compile Include="FolderGenerate.cs" />
-    <Compile Include="GenerateUtil.cs" />
-    <Compile Include="Helper.cs" />
+    <Compile Include="VersionTool\CRCVersion.cs" />
+    <Compile Include="Util\FileUtil.cs" />
+    <Compile Include="Generater\FolderGenerate.cs" />
+    <Compile Include="Generater\GenerateUtil.cs" />
+    <Compile Include="Util\Helper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpecialFolderGenerate.cs" />
-    <Compile Include="SVNVersion.cs" />
+    <Compile Include="Generater\SpecialFolderGenerate.cs" />
+    <Compile Include="VersionTool\SVNVersion.cs" />
     <Compile Include="UploadingTool\FileCollector.cs" />
     <Compile Include="UploadingTool\FTPHelper.cs" />
     <Compile Include="UploadingTool\FTPUtils.cs" />
     <Compile Include="UploadingTool\MainUploading.cs" />
     <Compile Include="UploadingTool\ResContainer.cs" />
-    <Compile Include="Utils.cs" />
-    <Compile Include="VersionUtils.cs" />
+    <Compile Include="Util\Utils.cs" />
+    <Compile Include="VersionTool\VersionUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
