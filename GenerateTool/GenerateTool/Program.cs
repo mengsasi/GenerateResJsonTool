@@ -15,7 +15,6 @@ namespace GenerateTool {
 
             Console.WriteLine( "请稍候，不要关闭程序..." );
 
-
             //GenerateTool文件夹
             string generateToolFolder = Environment.CurrentDirectory;
             var configJsonText = FileUtil.Load( generateToolFolder + "\\config.json" );
@@ -23,6 +22,9 @@ namespace GenerateTool {
 
             DirectoryInfo generateToolInfo = new DirectoryInfo( generateToolFolder );
             string root = generateToolInfo.Parent.Parent.FullName;//工程目录
+
+
+            #region 读取配置
 
             if( configJToken["root"] != null ) {
                 root = configJToken["root"].Value<string>();//配置的root路径
@@ -49,7 +51,10 @@ namespace GenerateTool {
             //    SVNVersion.InitSVNClient( configJToken["svnPath"].Value<string>() );
             //}
 
-            //生成本地default.res.json
+            #endregion
+
+
+            #region 生成本地default.res.json
 
             //不加版本号后缀
             VersionUtils.UseVersionSuffix = false;
@@ -60,6 +65,10 @@ namespace GenerateTool {
                 GenerateUtil.GenerateLocal( configJToken, resourcePath, defaultResJson );
             }
 
+            #endregion
+
+
+            #region 记录更改待上传的资源
 
             if( configJToken["uploading"] != null ) {
                 var uploading = configJToken["uploading"].Value<bool>();
@@ -70,7 +79,11 @@ namespace GenerateTool {
                 UploadingTool.MainUploading.MainProgram( root, configJToken );
             }
 
-            //生成网络res.json
+            #endregion 
+
+
+            #region 生成网络res.json
+
             Program.IgnoreWeb = false;//不忽略，就是生成网络资源
 
             //加版本号后缀
@@ -84,10 +97,16 @@ namespace GenerateTool {
                 GenerateUtil.GenerateWeb( configJToken, webResourcePath, gangsterResJson );
             }
 
+            #endregion
 
-            //上传ftp
+
+            #region 上传ftp
+
             UploadingTool.FTPUtils.InitFTP( configJToken );
             UploadingTool.MainUploading.Uploading( resourcePath );
+
+            #endregion 
+
 
             //SVNVersion.DeinitSVNClient();
 
