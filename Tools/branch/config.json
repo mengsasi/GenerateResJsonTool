@@ -19,54 +19,33 @@
 			"folderPath": "assets\\sounds",
 			"urlRoot": "assets/sounds",
 			"single": false
-		},
-		{
-			"folderPath": "assets\\movieclip",
-			"urlRoot": "assets",
-			"single": true,
-			"ignoreChange": false
-		},
-		{
-			"folderPath": "assets\\WebAvatar",
-			"urlRoot": "assets",
-			"single": true
 		}
 	],
 	"defaultresjson": "default.res.json",
 	"split": "=============分割线===============",
-	"generateWeb": true,
-	"webResourcePath": "",
-	"gameGroups": [
+	"generateWeb": false,
+	"webResourcePath": "\\Egret\\resource\\",
+	"gangsterGroups": [
 		{
 			"folderPath": "webresources\\webimages",
 			"urlRoot": "webresources/webimages",
 			"single": false
-		},
-		{
-			"folderPath": "webresources\\ungroup",
-			"urlRoot": "webresources",
-			"single": true
-		},
-		{
-			"folderPath": "webresources\\websounds",
-			"urlRoot": "webresources/websounds",
-			"single": false
 		}
 	],
-	"gameresjson": "game[version].res.json",
+	"gangsterresjson": "game[version].res.json",
 	"versionTextPath": "init.txt",
+	"useInitTxt": true,
 	"generate": false,
 	"uploading": false,
 	"ftpRootPath": "",
 	"uploadingOuterNet": false,
 	"username": "",
 	"password": "",
-	"proxyHost": "",
+	"proxyHost": "192.168.19.58",
     "proxyPort": "1080",
 	"ftpOuterNetRootPath": "",
     "webResourceUploadingDir": "webresources",
 	"ignoreWeb": false,
 	"lockOuterNet": true,
-	"svnPath": "",
-	"temp": "Tools\\Patch生成工具\\"
+	"svnPath": ""
 }
