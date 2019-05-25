@@ -16,6 +16,12 @@ namespace GenerateTool.UploadingTool {
                 if( line.Contains( ".exml" ) ) {
                     continue;
                 }
+                //排除
+                //assets/WebAvatar/WPlayerTitle6_tex.png:683703789
+                //config / c2s.spb:619239159
+                if( line.Contains( "WebAvatar" ) || line.StartsWith( "config" ) ) {
+                    continue;
+                }
                 var info = new ResourceInfo( line );
                 FileCollector.ResourceDict.Add( info.filePath, uint.Parse( info.version ) );
 

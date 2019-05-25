@@ -37,8 +37,14 @@ namespace GenerateTool.UploadingTool {
             //读取之前所有文件信息
             FileCollector.GenerateResourceInfo( versionText );
 
-            //将更改的资源复制到新文件夹
-            AssetOperation.FindChangeFiles( configJToken );
+            var useInitTxt = configJToken["useInitTxt"].Value<bool>();
+            if( useInitTxt ) {
+                AssetOperation.GetChangeFiles();
+            }
+            else {
+                //将更改的资源复制到新文件夹
+                AssetOperation.FindChangeFiles( configJToken );
+            }
 
             //生成资源组，添加到gangster.res.json中
             AssetOperation.GenerateChangeGroup( configJToken );
@@ -111,6 +117,22 @@ namespace GenerateTool.UploadingTool {
                 //        AssetOperation.CopyToNewPath( file, fileRelatePath );
                 //    }
                 //}
+            }
+        }
+
+        //靠init.txt生成的，知道更改的资源
+        private static void GetChangeFiles() {
+            string resourcePath = Program.ResourcePath;//root + @"\Egret\resource\"
+            var resOldDict = FileCollector.ResourceDict;
+            foreach( var item in resOldDict ) {
+                string assetPath = resourcePath + item.Key;
+                if( File.Exists( assetPath ) ) {
+                    var fileRelatePath = AssetOperation.GetRelatePath( assetPath, resourcePath );
+                    AssetOperation.CopyToNewPath( assetPath, fileRelatePath );
+                }
+                else {
+                    Program.ConsoleLog( assetPath + " 不存在" );
+                }
             }
         }
 

@@ -34,10 +34,18 @@
 	],
 	"gameresjson": "game[version].res.json",
 	"versionTextPath": "0.1.0.txt",
+	"useInitTxt": true,
+	"generate": false,
 	"uploading": false,
+	"ftpRootPath": "ftp://192.168.19.58/WebResource/resource",
+	"uploadingOuterNet": false,
 	"username": "",
 	"password": "",
-	"ftpRootPath": "ftp://192.168.19.58/WebResource/resource",
+	"proxyHost": "192.168.19.58",
+    "proxyPort": "1080",
+	"ftpOuterNetRootPath": "",
+    "webResourceUploadingDir": "webresources",
 	"ignoreWeb": true,
-	"svnPath": "https://192.168.19.58/svn/Game/Egret/resource"
+	"lockOuterNet": true,
+	"svnPath": ""
 }
